@@ -18,7 +18,7 @@
  */
 ?>
 
-<section class="sub-element <?php echo $element->elementType->class_name?> on-demand<?php if (@$ondemand) {?> hidden<?php }?><?php if ($this->action->id == 'update' && !$element->event_id) {?> missing<?php }?>"
+<section class="sub-element <?php echo $element->elementType->class_name?> on-demand<?php if (@$ondemand) {?> hidden<?php }?><?php if ($this->action->id == 'update' && property_exists($element, 'event_id') && !$element->event_id) {?> missing<?php }?>"
 	data-element-type-id="<?php echo $element->elementType->id ?>"
 	data-element-type-class="<?php echo $element->elementType->class_name ?>"
 	data-element-type-name="<?php echo $element->elementType->name ?>"
@@ -28,7 +28,7 @@
 		<h4 class="sub-element-title"><?php  echo $element->elementType->name; ?></h4>
 	</header>
 
-	<?php if ($this->action->id == 'update' && !$element->event_id) {?>
+	<?php if ($this->action->id == 'update' && property_exists($element, 'event_id') && !$element->event_id) {?>
 		<div class="alert-box alert">This element is missing and needs to be completed</div>
 	<?php }?>
 
